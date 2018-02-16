@@ -64,9 +64,9 @@ module.exports = function(app){
         });
     });
 
-    app.get("/populateNote/:id", function(req, res){
-        db.Article.find({_id:})
-    });
+    // app.get("/populateNote/:id", function(req, res){
+    //     db.Article.find({_id:})
+    // });
 
     app.post("/note/:id", function(req, res){
         
