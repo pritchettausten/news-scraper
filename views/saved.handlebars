@@ -1,0 +1,60 @@
+<nav>
+    <div class="nav-wrapper">
+        <ul id="nav-mobile" class="left hide-on-med-and-down" style="color: white;">
+            <li><a href="/">Mongo Scraper</a></li>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/saved">Saved Articles</a></li>
+            {{!-- <li><a href="/scrape" class="waves-effect waves-light btn" id="topBtn">Get Scraping</a></li> --}}
+        </ul>
+    </div>
+</nav>
+
+<div class="hero-image1">
+    <div class="hero-text">
+        <h1>Mongo Scraper</h1>
+        <p>See What's Up</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 cards-container">
+        {{#each articles}}
+            {{!-- <div class="row"> --}}
+                <div class="col s12 m12">
+                    <div class="card">
+                        <div class="card-action">
+                            <a href="{{this.link}}" style="color: white;">{{this.title}}</a>
+                            <a class="addBtn right modal-trigger" href="#note-modal">
+                                <i class="material-icons noteBtn" style="color: rgb(183, 218, 172);" value="{{this.id}}">add_circle</i>
+                            </a>
+                        </div>
+                        <div class="card-content">
+                            <p>{{this.sum}} <a href="{{this.link}}">keep reading</a></p>
+                        </div>
+                    </div>
+                </div>
+            {{!-- </div> --}}
+        {{/each}}
+            <div id="note-modal" class="modal">
+                <div class="modal-content">
+                    <h4>Add a Note to This Article</h4>
+                    <div>
+                        <form class="col s12">
+                            <div class="input-field col s12">
+                                <input id="noteBody" type="text">
+                                <label for="noteBody">Leave a Note</label>
+                                <a href="#!" class="modal-action modal-close waves-effect waves-light btn right" id="Submit">Submit</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="center">
+                        <p><h5>Current Note:</h5></p>
+                        <hr>
+                        <p id=""></p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    
+</div>

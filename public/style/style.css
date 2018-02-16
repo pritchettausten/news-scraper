@@ -3,7 +3,6 @@ nav{
     position: fixed;
     z-index: 100;
 }
-
 .navbar-default .navbar-nav>.active>a{
     background-color: rgba(85, 33, 19, 1);
 }
@@ -31,6 +30,16 @@ body, html {
     background-image: url("../img/news2.jpeg");
     opacity: .9;
     height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    margin-bottom: 10px;
+}
+.hero-image1 {
+    background-image: url("../img/news2.jpeg");
+    opacity: .9;
+    height: 70%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

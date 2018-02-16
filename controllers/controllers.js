@@ -39,11 +39,63 @@ module.exports = function(app){
                     });
                 }
             })
-            var obj = {
-                articles: scrapedArticles
-            };
-            console.log(obj);
-            res.render("index", obj);
+            res.redirect("/saved");
+            // var obj = {
+            //     articles: scrapedArticles
+            // };
+            // console.log(obj);
+            // res.render("index", obj);
         });
     });
+
+    app.get("/saved", function(req, res){
+        db.Article.find({}, function(error, doc) {
+            
+            if (error) {
+              console.log(error);
+            }
+            else {
+              var obj = {
+                articles: doc
+              };
+        
+              res.render("saved", obj);
+            }
+        });
+    });
+
+    app.get("/populateNote/:id", function(req, res){
+        db.Article.find({_id:})
+    });
+
+    app.post("/note/:id", function(req, res){
+        
+        //var id = req.params.id;
+        var note = req.body.note;
+
+        db.Note.create(note)
+            .then(function(dbNote) {
+                return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+            })
+            .then(function(dbArticle) {
+                res.json(dbArticle);
+            })
+            .catch(function(err) {
+                res.json(err);
+        });
+
+        // console.log("Note: " + req.body.note);
+
+        // db.Article.findOneAndUpdate({"_id": id}, {$push: {"note": note}}, function(err, doc){
+        //     if (err){
+        //         console.log(err)
+        //     }else{
+        //         //console.log(doc);
+                
+        //     }
+        // })
+        // res.redirect("/");
+    })
+
+    // app.get("/comment")
 };
